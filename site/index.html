@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="description" content="K 島終端閱讀器的中性、無追蹤下載頁。">
+  <title>K 島終端閱讀器・下載</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要內容</a>
+
+  <header class="topbar">
+    <div class="brand" aria-label="K 島終端閱讀器">
+      <span class="brand-mark" aria-hidden="true">K</span>
+      <span>K 島終端閱讀器</span>
+    </div>
+    <span class="privacy-badge">非官方・無廣告・無追蹤器</span>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="eyebrow">終端裡的 K 島閱讀體驗</p>
+      <h1 id="hero-title">下載、解壓縮、開始閱讀。</h1>
+      <p class="hero-copy">
+        支援鍵盤與滑鼠、完整討論串、引用導覽、內容／ID 搜尋，
+        以及在支援的終端內預覽圖片與 WebM。
+      </p>
+
+      <div class="release-panel" aria-live="polite">
+        <div>
+          <span class="release-label">最新版本</span>
+          <strong id="release-version">正在讀取發行資訊…</strong>
+          <span id="release-date" class="release-date"></span>
+        </div>
+        <p id="release-status" class="release-status">下載連結將在驗證完成後開啟。</p>
+      </div>
+
+      <div class="download-grid" aria-label="下載選項">
+        <a class="download-card" data-download="windows" aria-disabled="true">
+          <span class="platform">▣ Windows</span>
+          <strong>下載 ZIP</strong>
+          <span>PowerShell／Windows Terminal／WezTerm</span>
+        </a>
+        <a class="download-card" data-download="posix" aria-disabled="true">
+          <span class="platform">● macOS・Linux・WSL</span>
+          <strong>下載 TAR.GZ</strong>
+          <span>Terminal／Kitty／WezTerm</span>
+        </a>
+      </div>
+
+      <p class="checksum-line">
+        想確認檔案沒被篡改？
+        <a id="checksum-link" aria-disabled="true">下載 SHA-256 檢查碼</a>
+      </p>
+    </section>
+
+    <section class="content-section" aria-labelledby="install-title">
+      <div class="section-heading">
+        <p class="eyebrow">第一次使用</p>
+        <h2 id="install-title">安裝程式會告訴你缺少什麼</h2>
+      </div>
+
+      <div class="steps">
+        <article>
+          <span class="step-number">1</span>
+          <h3>下載並解壓縮</h3>
+          <p>所有檔案都放在同一個資料夾，不會擅自寫入系統目錄。</p>
+        </article>
+        <article>
+          <span class="step-number">2</span>
+          <h3>執行安裝器</h3>
+          <p>Windows 雙擊 <code>start-here.cmd</code>；macOS、Linux 或 WSL 執行 <code>sh ./install.sh</code>。</p>
+        </article>
+        <article>
+          <span class="step-number">3</span>
+          <h3>開啟閱讀器</h3>
+          <p>依畫面提示啟動。安裝器只會在確認後建立專用環境與安裝固定版本依賴。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section two-column" aria-labelledby="privacy-title">
+      <div>
+        <p class="eyebrow">隱私</p>
+        <h2 id="privacy-title">這個下載頁不追蹤你</h2>
+      </div>
+      <div class="plain-list">
+        <p>沒有 Google Analytics、廣告 SDK、外部字體或社群追蹤像素。</p>
+        <p>閱讀器的已讀位置與收藏預設只儲存在使用者的電腦。</p>
+        <p>圖片與影片預設收起，只有主動開啟後才會下載。</p>
+      </div>
+    </section>
+
+    <section class="notice" aria-label="免責聲明">
+      <strong>非官方工具</strong>
+      <p>
+        本專案是獨立製作的終端閱讀器，不隸屬、不代表也不受 K 島網站官方背書。
+        使用時請遵守原網站規範與當地法律。
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <span>K 島終端閱讀器</span>
+    <span>本頁不含第三方追蹤資源</span>
+  </footer>
+</body>
+</html>
