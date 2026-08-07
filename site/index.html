@@ -7,6 +7,7 @@
   <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
   <meta name="description" content="K 島終端閱讀器的中性、無追蹤下載頁。">
+  <meta name="color-scheme" content="light dark">
   <title>K 島終端閱讀器・下載</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/site.css">
@@ -29,11 +30,12 @@
       <h1 id="hero-title">下載、解壓縮、開始閱讀。</h1>
       <p class="hero-copy">
         支援鍵盤與滑鼠、完整討論串、引用導覽、內容／ID 搜尋，
-        以及在支援的終端內預覽圖片與 WebM。
+        以及在支援的終端內直接顯示圖片、播放 GIF 與 WebM ——
+        不開瀏覽器，也不會彈出任何桌面視窗。
       </p>
 
       <div class="release-panel" aria-live="polite">
-        <div>
+        <div class="release-meta">
           <span class="release-label">最新版本</span>
           <strong id="release-version">正在讀取發行資訊…</strong>
           <span id="release-date" class="release-date"></span>
@@ -42,15 +44,15 @@
       </div>
 
       <div class="download-grid" aria-label="下載選項">
-        <a class="download-card" data-download="windows" aria-disabled="true">
-          <span class="platform">▣ Windows</span>
-          <strong>下載 ZIP</strong>
-          <span>PowerShell／Windows Terminal／WezTerm</span>
-        </a>
         <a class="download-card" data-download="posix" aria-disabled="true">
-          <span class="platform">● macOS・Linux・WSL</span>
+          <span class="platform">macOS・Linux・WSL</span>
           <strong>下載 TAR.GZ</strong>
-          <span>Terminal／Kitty／WezTerm</span>
+          <span class="download-note">Kitty／Ghostty／WezTerm／iTerm2 可顯示高畫質圖片</span>
+        </a>
+        <a class="download-card" data-download="windows" aria-disabled="true">
+          <span class="platform">Windows</span>
+          <strong>下載 ZIP</strong>
+          <span class="download-note">Windows Terminal 內建支援；WezTerm 為選配</span>
         </a>
       </div>
 
@@ -64,17 +66,23 @@
       <div class="section-heading">
         <p class="eyebrow">第一次使用</p>
         <h2 id="install-title">安裝程式會告訴你缺少什麼</h2>
+        <p class="section-copy">
+          三個步驟，全程都會先問過你才動作。
+        </p>
       </div>
 
       <div class="steps">
         <article>
           <span class="step-number">1</span>
           <h3>下載並解壓縮</h3>
-          <p>所有檔案都放在同一個資料夾，不會擅自寫入系統目錄。</p>
+          <p>所有檔案都放在同一個資料夾，不會擅自寫入系統目錄，也不需要系統管理員權限。</p>
+          <p class="command-label">macOS・Linux・WSL 也可以直接在終端解壓：</p>
+          <pre class="command-block"><code>tar -xzf <span class="command-arg">komica-terminal-reader-posix.tar.gz</span></code></pre>
+          <p class="command-note">Windows 對著 ZIP 按右鍵「解壓縮全部」即可。</p>
         </article>
         <article>
           <span class="step-number">2</span>
-          <h3>執行安裝器</h3>
+          <h3>執行開始檔</h3>
           <p>Windows 雙擊 <code>Windows_開始使用.cmd</code>；macOS 雙擊 <code>macOS_雙擊開始.command</code>；Linux／WSL 執行 <code>sh ./Linux_WSL_開始.sh</code>。</p>
         </article>
         <article>
@@ -83,17 +91,71 @@
           <p>第一次依畫面提示安裝；以後使用同一個開始檔即可直接啟動。程式本體收在 <code>app</code> 資料夾。</p>
         </article>
       </div>
+
+      <div class="callout-grid">
+        <article class="callout">
+          <h3>第一次啟動需要連網</h3>
+          <p>
+            安裝器會用固定版本從套件庫取得三個相依套件，實測約需下載 85 MB，
+            全部裝在解壓縮資料夾內的獨立環境裡。畫面會先列出清單並等你輸入
+            <code>y</code>，拒絕也完全可以繼續使用。之後啟動不再需要網路連線，
+            除了讀取討論串本身。
+          </p>
+        </article>
+        <article class="callout">
+          <h3>macOS 第一次會被 Gatekeeper 擋下</h3>
+          <p>
+            這是所有未經 Apple 簽章程式的共同待遇，不代表檔案有問題。
+            在 <code>macOS_雙擊開始.command</code> 上按<strong>右鍵 →「開啟」</strong>，
+            再按一次「開啟」即可；之後雙擊就正常了。
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="quality-title">
+      <div class="section-heading">
+        <p class="eyebrow">畫質</p>
+        <h2 id="quality-title">圖片好不好看，取決於你的終端</h2>
+        <p class="section-copy">
+          終端要支援像素圖形協定，貼文裡的圖才會是真正的圖片；不支援的終端只能
+          用字元拼出低解析度的近似畫面。閱讀器兩種情況都能用，差別只在畫質。
+        </p>
+      </div>
+
+      <div class="quality-grid">
+        <article class="quality-card is-good">
+          <span class="quality-tag">高畫質</span>
+          <h3>支援像素圖形的終端</h3>
+          <p>
+            <code>Kitty</code>、<code>Ghostty</code>、<code>WezTerm</code>、
+            <code>iTerm2</code>、<code>Windows Terminal</code>、<code>Konsole</code>、
+            <code>foot</code> 等。圖片、GIF 與 WebM 都直接畫在討論串裡。
+          </p>
+        </article>
+        <article class="quality-card">
+          <span class="quality-tag">相容模式</span>
+          <h3>其他終端</h3>
+          <p>
+            macOS 內建的終端機、舊版 Windows 主控台等。畫面仍然完整可讀，
+            但圖片會退回字元拼貼。macOS 上雙擊開始檔時，閱讀器會自動找看看
+            你有沒有裝上面那些終端，有就直接在那裡開；沒有也只會提示，
+            不會自行下載或安裝任何東西。
+          </p>
+        </article>
+      </div>
     </section>
 
     <section class="content-section two-column" aria-labelledby="privacy-title">
-      <div>
+      <div class="section-heading">
         <p class="eyebrow">隱私</p>
         <h2 id="privacy-title">這個下載頁不追蹤你</h2>
       </div>
       <div class="plain-list">
-        <p>沒有 Google Analytics、廣告 SDK、外部字體或社群追蹤像素。</p>
-        <p>閱讀器的已讀位置與收藏預設只儲存在使用者的電腦。</p>
-        <p>圖片與影片預設收起，只有主動開啟後才會下載。</p>
+        <p>沒有 Google Analytics、廣告 SDK、外部字體或社群追蹤像素，整頁只載入自己網域上的三個檔案。</p>
+        <p>閱讀器只記住你追蹤的討論串與每串的已讀基準，存在你自己的電腦上；它不會記住你上次讀到哪一篇。</p>
+        <p>圖片與影片預設收起，只有你主動開啟才會下載。</p>
+        <p>回文一律只產生草稿並交回瀏覽器，由你自己送出；程式不會自動發文。</p>
       </div>
     </section>
 
