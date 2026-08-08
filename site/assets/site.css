@@ -230,10 +230,10 @@ footer {
 }
 
 h1 {
-  max-width: 18ch;
+  /* 桌面版給主標題完整的內容寬度，避免第二行看起來像被縮排；
+     窄畫面仍會依可用寬度自然換行。 */
+  max-width: none;
   margin-bottom: 1.1rem;
-  /* 下限刻意壓到 1.75rem：標題是 12 個全形字，中文可以在任意字之間斷行，
-     字級再大一點就會在 375px 寬的手機上斷成「下載、解壓／縮、開始閱讀。」 */
   font-size: clamp(1.75rem, 5vw, 3.5rem);
   font-weight: 700;
   letter-spacing: -0.035em;
